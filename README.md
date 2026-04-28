@@ -6,3 +6,13 @@ Knowing this, I decided to mimic this scenario in a Python project. The human al
 
 The goal is to determine which one gets better results which will be computed as "number of steps required to find the exit". Let me go through the different files that will be used here.
 
+## Files and their utility
+
+### Maze.py
+Defines the maze class, how the maze is constructed and useful methods. Two mazes are possible, uncomment the one you want to use.
+
+### Colorization.py
+Utility class that I created, used to make nice prints in the terminal easily
+
+### Right_hand_rule.py
+Defines the right-hand rule algorithm to solve the maze. It defines the pseudo algorithm and the actual one in the while loop. It also prints the number of steps made during the solve of the maze.
