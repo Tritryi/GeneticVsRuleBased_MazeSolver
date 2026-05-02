@@ -16,3 +16,15 @@ Utility class that I created, used to make nice prints in the terminal easily
 
 ### Right_hand_rule.py
 Defines the right-hand rule algorithm to solve the maze. It defines the pseudo algorithm and the actual one in the while loop. It also prints the number of steps made during the solve of the maze.
+
+## How to use ?
+
+### Right-hand rule
+
+To see the performance of the right-hand rule algorithm, start by uncommenting the maze you want to use as an example in `maze.py`. Then simply do this : 
+```
+python3 code/right_hand_rule.py
+```
+It should print you the maze solving step by step along with total number of steps made.
+
+### Genetic algorithm
