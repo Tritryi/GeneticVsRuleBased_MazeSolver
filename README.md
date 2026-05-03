@@ -43,5 +43,3 @@ python3 main.py
 ```
 
 The main script is interactive, make sure to execute every part in the order you wish.
-
-## Genetic algorithm
