@@ -1,0 +1,64 @@
+from genetic_algorithm import executeGA
+from right_hand_rule import executeRigthtHand
+from maze import Maze
+import numpy as np
+import matplotlib.pyplot as plt
+
+mazeObject = Maze()
+
+
+keepExecute = True
+while keepExecute:
+    action = input("This is the main script to compare results between Right Hand Rule and Genetic Algorithm (be sure to execute both to see results) \n \
+Enter what you want to do : \n 1 : execute the maze resolution by right hand rule \n \
+2 : execute the genetic algorithm \n q : stop execution \n")
+    
+    if action == "q":
+        keepExecute = False
+        break
+        
+    if action == "1":
+        print("Executing right hand rule")
+        print()
+        rhSteps = executeRigthtHand()
+        print()
+            
+    if action == "2":
+        print("Executing Genetic Algorithm")
+        print()
+        gaResults = executeGA()
+        print()
+        
+        
+
+# Now building the results
+try:
+    plt.figure(figsize=(12,5))
+    
+    plt.subplot(1,2,1)
+    plt.plot(gaResults, label="Genetic algorithm", color="plum")
+    plt.title("Learning rate Genetic Algorithm")
+    plt.xlabel("Generation")
+    plt.ylabel("Score (distance to exit + steps)")
+    plt.legend()
+    plt.grid(True,alpha=0.3)
+    
+    plt.subplot(1,2,2)
+    final_steps_ga = gaResults[-1]*10
+    methods = ["Right Hand", "Genetic Algorithm"]
+    steps = [rhSteps, final_steps_ga]
+    plt.bar(methods, steps, color=["salmon","chartreuse"])
+    plt.title("Final comparison between RHR and GA")
+    plt.ylabel("Number of steps to find exit")
+    
+    for i,v in enumerate(steps):
+        plt.text(i, v + 0.5, str(int(v)), ha='center', fontweight='bold')
+    plt.tight_layout()
+    plt.show(   )
+
+
+except Exception as e:
+    print(f"A problem occured, maybe you forgot to execute both GA and RHR. \n {e}")
+
+
+
