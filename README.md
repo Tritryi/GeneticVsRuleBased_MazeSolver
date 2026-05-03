@@ -26,7 +26,8 @@ Defines the genetic algorithm used to solve the maze. I initialized it with a po
 
 To execute the algorithms and compare their results you will need to prepare a Python environment. Start by creating a virtual environment : 
 ```
-cd code/
+git clone https://github.com/Tritryi/GeneticVsRuleBased_MazeSolver.git
+cd GeneticVsRuleBased_MazeSolver/code/
 python3 -m venv .venv
 source .venv/bin/activate
 ```
