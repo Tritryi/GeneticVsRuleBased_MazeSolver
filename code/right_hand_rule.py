@@ -57,28 +57,33 @@ def executeRigthtHand():
         
         right_cell_x = x + dx_d
         right_cell_y = y + dy_d
-        
-        if maze[right_cell_y][right_cell_x] == 0: # there is a way on the right, i go there
-            orientation = right_direction
-            x = right_cell_x
-            y = right_cell_y
-            steps +=1        
-
-            
-        else : 
-            dx_d, dy_d = directions[orientation]
-            cell_infront_x = x + dx_d
-            cell_infront_y = y + dy_d
-            
-            if maze[cell_infront_y][cell_infront_x] == 0: # there is no wall in front of me, i go there
-                # orientation does not move
-                x = cell_infront_x
-                y = cell_infront_y
+        try:
+            if maze[right_cell_y][right_cell_x] == 0: # there is a way on the right, i go there
+                orientation = right_direction
+                x = right_cell_x
+                y = right_cell_y
                 steps +=1        
 
                 
-            else:
-                orientation = (orientation-1) % 4
+            else : 
+                dx_d, dy_d = directions[orientation]
+                cell_infront_x = x + dx_d
+                cell_infront_y = y + dy_d
+                
+                if maze[cell_infront_y][cell_infront_x] == 0: # there is no wall in front of me, i go there
+                    # orientation does not move
+                    x = cell_infront_x
+                    y = cell_infront_y
+                    steps +=1        
+
+                    
+                else:
+                    orientation = (orientation-1) % 4
+        
+        except IndexError:
+            orientation = (orientation -1) %4
+            
+            
         mazeObject.updateOrientation(orientation)
         mazeObject.updateX(x)
         mazeObject.updateY(y)
