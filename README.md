@@ -37,9 +37,11 @@ pip install -r ../requirements.txt
 ```
 
 ## Execution
-Simply execute the main script, the maze is set to a more complex one to start with but you can go to maze.py and uncomment the one you wish to use.
+Simply execute the main script, the maze is set to a more complex one by default but you can go to maze.py and uncomment the one you wish to use.
 ```
 python3 main.py
 ```
+
+The main script is interactive, make sure to execute every part in the order you wish.
 
 ## Genetic algorithm
