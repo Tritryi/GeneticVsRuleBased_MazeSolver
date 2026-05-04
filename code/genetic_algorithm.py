@@ -21,6 +21,8 @@ def executeGA():
     mutation_rate = 0.05
     best_score_per_gen = []
     best_genome = None
+    f = open("ga_results.txt", "w")
+    f.write("--- GENETIC ALGORITHM RESULTS BY GENERATION---\n\n")
 
     # Step 1 : populate
     # creates 100 individuals : 100 tables which contains 30 values from 0 to 3
@@ -83,9 +85,9 @@ def executeGA():
         best_score_per_gen.append(scores_array[sorted_results[0]])
         best_genome = population[sorted_results[0]]
 
-        print(f"--- Generation {gen} ---")
-        print(f"Best individual : #{sorted_results[0]}, with a score of {scores_array[sorted_results[0]]:.2f}.")
-        print("-" *10)
+        f.write(f"--- Generation {gen} ---\n")
+        f.write(f"Best individual : #{sorted_results[0]}, with a score of {scores_array[sorted_results[0]]:.2f}.\n")
+        f.write("-" *10+"\n")
 
         # Step 3 : Next Generation, the crossover    
         # preparing next generation and making sure best individual survives
@@ -122,6 +124,6 @@ def executeGA():
     
 
 
-    
+    f.close()
     return best_score_per_gen, best_genome
     
