@@ -8,4 +8,4 @@ env/
 code/.venv/
 
 # local files
-code/ga_results.txt
+ga_results.txt
