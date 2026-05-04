@@ -18,6 +18,7 @@ def executeGA():
     genome_length = 10
     mutation_rate = 0.05
     best_score_per_gen = []
+    best_genome = None
 
     # Step 1 : populate
     # creates 100 individuals : 100 tables which contains 30 values from 0 to 3
@@ -77,9 +78,10 @@ def executeGA():
         # sort the results, best scored individuals first, gives an indexes array 
         sorted_results = np.argsort(distances_array)
         best_score_per_gen.append(distances_array[sorted_results[0]])
+        best_genome = population[sorted_results[0]]
 
         print(f"--- Generation {gen} ---")
-        print(f"Best individual : #{sorted_results[0]}, with {distances_array[sorted_results[0]]*10:.0f} steps away from the exit")
+        print(f"Best individual : #{sorted_results[0]}, with {distances_array[sorted_results[0]]*10:.0f} steps to reach the exit")
         print("-" *10)
 
         # Step 3 : Next Generation, the crossover    
@@ -116,5 +118,5 @@ def executeGA():
 
 
     
-    return (best_score_per_gen)
+    return best_score_per_gen, best_genome
     

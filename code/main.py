@@ -26,7 +26,8 @@ Enter what you want to do : \n 1 : execute the maze resolution by right hand rul
     if action == "2":
         print("Executing Genetic Algorithm")
         print()
-        gaResults = executeGA()
+        gaResults, best_genome = executeGA()
+        print(f"The best individual solved the maze the following way : {best_genome}")
         print()
         
         

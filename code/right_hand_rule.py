@@ -51,7 +51,7 @@ def executeRigthtHand():
     steps = 0
 
     while x != 3 or y != 0:
-        # for example, if orientation = 2, our right is 3 (west)
+        # for example, if orientation = 2 (south), our right is 3 (west)
         right_direction = (orientation+1) % 4
         dx_d, dy_d = directions[right_direction]
         
@@ -92,7 +92,7 @@ def executeRigthtHand():
         mazeObject.printMaze()
         time.sleep(0.3)   
 
-    print(f"Number of steps to resolve the maze : {steps}")
+    print(f"Number of steps to solve the maze : {steps}")
     return steps
         
 
