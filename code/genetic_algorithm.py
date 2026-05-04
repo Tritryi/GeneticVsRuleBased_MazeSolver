@@ -14,8 +14,10 @@ We use a genome of 10 genes because the objective is to prove that it can do bet
 
 """
 def executeGA():
-    population_size = 100
-    genome_length = 10
+    population_size = 100 # for easy and medium maze
+    # population_size = 200 # for complex maze
+    genome_length = 10 # for easy and medium maze
+    # genome_length = 80 # for complex maze
     mutation_rate = 0.05
     best_score_per_gen = []
     best_genome = None
@@ -23,7 +25,6 @@ def executeGA():
     # Step 1 : populate
     # creates 100 individuals : 100 tables which contains 30 values from 0 to 3
     population = np.random.randint(0, 4, size=(population_size, genome_length))
-
 
     # Step 2 : Fitness
     # setting up our direction table
@@ -38,10 +39,11 @@ def executeGA():
     maze = mazeObject.getMaze()
     start_x = mazeObject.getX()
     start_y = mazeObject.getY() 
-
-    for gen in range(10):
+    
+    for gen in range(10): # for easy and medium maze
+    # for gen in range(400): # for complex maze
         # to store distances
-        all_distances = []  
+        all_scores = []  
 
         # for each individual
         for p in population:
@@ -58,30 +60,31 @@ def executeGA():
                 next_X = x + dx_d
                 next_Y = y + dy_d
                 
-                # checking that we are not our of the maze
+                # checking that we are not out of the maze
                 if 0 <= next_Y < len(maze) and 0 <= next_X < len(maze[0]):
                     # if the cell targeted is not a wall, it goes on it. Otherwise, it does not move
-                    steps +=1
                     if maze[next_Y][next_X] == 0:
                         x = next_X
                         y = next_Y
+                        steps +=1
+
                 # if the end was reached, no need to keep going
                 if x == 3 and y == 0:
                     break
             # computes a score based on distance and steps done, the first part computes the distance to the exit, the second one is used to include steps in the result
             # with this if A : 0 + (9*0.1) and B : 0 + (6*0.1), B will get a better score because it requires less steps
             score = (abs(x-3) + abs(y-0)) + (steps*0.1)
-            all_distances.append(score)
+            all_scores.append(score)
             
         # converts the distance array to a numpy array    
-        distances_array = np.array(all_distances)
+        scores_array = np.array(all_scores)
         # sort the results, best scored individuals first, gives an indexes array 
-        sorted_results = np.argsort(distances_array)
-        best_score_per_gen.append(distances_array[sorted_results[0]])
+        sorted_results = np.argsort(scores_array)
+        best_score_per_gen.append(scores_array[sorted_results[0]])
         best_genome = population[sorted_results[0]]
 
         print(f"--- Generation {gen} ---")
-        print(f"Best individual : #{sorted_results[0]}, with {distances_array[sorted_results[0]]*10:.0f} steps to reach the exit")
+        print(f"Best individual : #{sorted_results[0]}, with a score of {scores_array[sorted_results[0]]:.2f}.")
         print("-" *10)
 
         # Step 3 : Next Generation, the crossover    
@@ -93,8 +96,10 @@ def executeGA():
         # one is already kept as it is, we need 99 more
         for _ in range(population_size - 1):
             # taking two random parents among the 20 best
-            index_parent1 = np.random.randint(0,20)
-            index_parent2 = np.random.randint(0,20)
+            index_parent1 = np.random.randint(0,20) # for easy and medium maze
+            index_parent2 = np.random.randint(0,20) # for easy and medium maze
+            # index_parent1 = np.random.randint(0,50) # for complex maze
+            # index_parent2 = np.random.randint(0,50) # for complex maze
             
             parent1 = population[sorted_results[index_parent1]]
             parent2 = population[sorted_results[index_parent2]]
