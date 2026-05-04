@@ -6,3 +6,6 @@ __pycache__/
 venv/
 env/
 code/.venv/
+
+# local files
+code/ga_results.txt
