@@ -30,7 +30,6 @@ def printGaMaze(genome):
         
         if 0 <= next_Y < len(maze) and 0 <= next_X < len(maze[0]):
             if maze[next_Y][next_X] == 0:
-                # Le mouvement est possible
                 x = next_X
                 y = next_Y
                 mazeObject.updateX(x)
