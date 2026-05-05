@@ -35,10 +35,11 @@ def printGaMaze(genome):
                 y = next_Y
                 mazeObject.updateX(x)
                 mazeObject.updateY(y)
+                mazeObject.clear()
+                mazeObject.printMaze()
+                time.sleep(0.3)
                 
-        mazeObject.clear()
-        mazeObject.printMaze()
-        time.sleep(0.3)
+        
         if x==3 and y==0:
             break        
 
