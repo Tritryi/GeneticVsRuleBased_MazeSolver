@@ -14,10 +14,10 @@ We use a genome of 10 genes because the objective is to prove that it can do bet
 
 """
 def executeGA():
-    # population_size = 100 # for easy and medium maze
-    population_size = 600 # for complex maze
-    # genome_length = 10 # for easy and medium maze
-    genome_length = 80 # for complex maze
+    population_size = 100 # for easy and medium maze
+    # population_size = 600 # for complex maze
+    genome_length = 10 # for easy and medium maze
+    # genome_length = 80 # for complex maze
     mutation_rate = 0.05
     best_score_per_gen = []
     best_genome = None
@@ -42,7 +42,8 @@ def executeGA():
     start_x = mazeObject.getX()
     start_y = mazeObject.getY() 
     
-    for gen in range(15): 
+    for gen in range(10): # for easy and medium maze
+    # for gen in range(15):  # for complex maze
         # to store distances
         all_scores = []  
 
@@ -114,10 +115,10 @@ def executeGA():
         # one is already kept as it is, we need 99 more
         for _ in range(population_size - 1):
             # taking two random parents among the 20 best
-            # index_parent1 = np.random.randint(0,20) # for easy and medium maze
-            # index_parent2 = np.random.randint(0,20) # for easy and medium maze
-            index_parent1 = np.random.randint(0,50) # for complex maze
-            index_parent2 = np.random.randint(0,50) # for complex maze
+            index_parent1 = np.random.randint(0,20) # for easy and medium maze
+            index_parent2 = np.random.randint(0,20) # for easy and medium maze
+            # index_parent1 = np.random.randint(0,50) # for complex maze
+            # index_parent2 = np.random.randint(0,50) # for complex maze
             
             parent1 = population[sorted_results[index_parent1]]
             parent2 = population[sorted_results[index_parent2]]
