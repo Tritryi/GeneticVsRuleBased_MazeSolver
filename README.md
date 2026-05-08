@@ -7,6 +7,9 @@ Knowing this, I decided to mimic this scenario in a Python project. The human al
 
 The goal is to determine which one gets better results which will be computed as "number of steps required to find the exit". Let me go through the different files that will be used here.
 
+# Results and analyze
+If you don't wish to execute the code and simply want to see the results, you can simply read my [Maze report](https://github.com/Tritryi/GeneticVsRuleBased_MazeSolver).
+
 ## Files and their utility
 
 ### Maze.py
